@@ -1,0 +1,25 @@
+{% extends "tem.html" %}
+{% block content %}
+<link href="static/css/bootstrap.css" rel="stylesheet">
+   <div class='jumbotron'>
+   <center><marquee bgcolor="blur" Behavior="alternate" ALIGN="top"><h3><font size=10>مُدوّنتي</font></h3></marquee><br><br>
+        {% for message in get_flashed_messages() %}
+       <h1 class="bg-success">نتائج البحث</h1>
+<h1 class="bg-success" class="flash">{{message}}</h1>
+{% endfor  %}
+<div class="main">
+    {% for post in sd33 %}
+ 		<table width='100%' border='5' cellpadding'5' bgcolor='green'>
+ 		<tr>
+ 		<td>
+ 		 <center><font size=10><a href="{{ url_for('static', filename=post['nm1'])}}">{{post['namedb']}}</a></font></center>
+ 		</td>
+ 		</tr>
+ 		</table> 
+ 		
+ 		
+    
+    {% endfor %}
+    </div></center></div>
+    <button class="btn-primary btn-lg" onclick="location.href='/sound';">العودة الى الصفحة السابقة</button>
+{% endblock %}

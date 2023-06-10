@@ -1,0 +1,60 @@
+{% extends "tem.html" %}
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+<h1>{{message}}</h1></center>
+{% endfor %}
+<br>
+<br>
+<div class="container">
+<div class="row">
+<div class="col-md-12 ">
+<div class="well well-large text-center " style="font-family: KacstQurn,Suruma;"><h1>اضافة ملفات جديدة</h1></div></div></div>
+<div class="row">
+<div class="col-md-12 well well-large ">
+<div class="form-group ">
+<center><form action="{{ url_for('addfile') }}" class="text-center" method="POST" enctype="multipart/form-data">
+<table><tr><td>
+<select class="form-control" id="sele" name="sele"  size="1">
+<option>image</option>
+<option>video</option>
+<option>‫‪audio</option>
+
+
+</select></td><td>
+<label class="ffo">نوع الملف:</label></td></tr>
+<tr><td>
+<input type="file" class="form-control" name="data" class="btn-primary" id="no" required="" accept="" multiple />
+</td><td><label class="ffo">اختار ملف:</label></td></tr>
+<tr><td colspan="3" >
+<button class="btn-primary btn-lg" class="form-control" on id="nom" >اضافة</button>
+</td></tr></table>
+
+</form></center></div></div></div></div>
+<div class="container">
+<div class="row">
+<div class="col-md-12 text-center">
+<button class="btn-primary btn-lg" onclick="location.href='/';">العودة الى الصفحة الرئيسية</button>
+</div></div></div>
+<script >
+var d=document.getElementById("sele").value;
+document.getElementById("no").setAttribute("accept",d+"/*");
+document.getElementById("sele").onchange=function () {
+	
+	document.getElementById("no").setAttribute("accept",document.getElementById("sele").value+"/*");
+
+}
+//alert({{trns}});
+document.getElementById("trn").onclick=function () {
+if ({{trns}} =='0' ) {
+var df=window.prompt("اختار نوع البجث  هل هو في 1-الصور 2-الصوت 3-الفيديو اكتب الرقم:","");
+document.getElementById("acc").setAttribute("action","/search"+df+"");
+//alert(document.getElementById("acc").getAttribute("action"));
+}}
+
+
+</script>
+{% endblock%}
+
+   
+   

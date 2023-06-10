@@ -1,0 +1,65 @@
+{% extends "tem.html" %}
+{% block content %}
+
+       {% for message in get_flashed_messages() %}
+       <h1 class="bg-success" class="flash">نتائج البحث</h1>
+       <h1 class="bg-success" class="flash">{{message}}</h1>
+{% endfor  %}
+
+<div class="container">
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 well well-large" style="margin: 8px;float:right; " >
+{% if d=='1' %}
+
+ <div class="well well-large text-center" style="font-family: KacstQurn,Suruma;"><h1 ><span class="badge">{{ln}}</span>نتائج البحث في الصور </h1></div> 
+ 
+{% for book in db2 %} 
+<div style="float: left;margin: 7px;" class="well well-large showall">
+
+<a href="{{ url_for('showone',var='img'+book[0]) }}" ><img src="{{ url_for('static', filename=book[1])}}" width="200" height="200" /></a>
+</div>
+{% endfor %}
+{% endif %}
+{% if d=='2' %}
+<div class="well well-large text-center" style="font-family: KacstQurn,Suruma;"><h1 ><span class="badge">{{ln}}</span>نتائج البحث في الصوت </h1></div> 
+{% for book in db2 %} 
+
+<div style="float: left;margin: 7px;" class="well well-large showall">
+<table width="50"><tr><td>
+<audio controls ‫‪autoplay‬‬ ‫‪loop‬‬  >
+<source src="{{ url_for('static', filename=book[1]) }}" type="audio/mp3" >
+</audio></td></tr><td >
+<div  style="overflow:hidden; width: 300px;height: 20px;font-size: 15px;text-align: center;">
+<a style="color: black;text-decoration: none;text-align: center; " href="{{ url_for('showone',var='sound'+book[0]) }}" >{{book[0]}}</a>
+</div>
+</td></tr></table></div>
+{% endfor %}
+{% endif %}
+{% if d=='3' %}
+ <div class="well well-large text-center" style="font-family: KacstQurn,Suruma;"><h1 ><span class="badge">{{ln}}</span> نتائج البحث في الفيديو </h1></div> 
+{% for book in db2 %}
+
+
+<div id="showall" style="float: left;margin: 7px;"class="well well-large showall">
+<table width="100%" ><tr><td>
+<video controls width="200" height="200" style="border-radius: 50px;border:2px solid blue;">
+<source src="{{ url_for('static', filename=book[1])}}"  >
+</video></td></tr><tr><td >
+<div  style="overflow:hidden; width: 200px;height: 20px;font-size: 15px;text-align: center;">
+<a style="color: black;text-decoration: none;text-align: center;" href="{{ url_for('showone',var='vid'+book[0]) }}" >{{book[0]}}</a>
+<div>
+</td></tr></table>
+</div>
+
+{% endfor %}
+{% endif %}
+</div></div>
+</div> 
+
+    
+
+  
+    <button class="btn-primary btn-lg" onclick="location.href='/imsh';">العودة الى الصفحة السابقة</button>
+
+{% endblock %}  
+

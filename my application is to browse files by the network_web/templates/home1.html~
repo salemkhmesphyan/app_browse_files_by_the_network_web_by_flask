@@ -1,0 +1,48 @@
+{% extends "tem.html" %}
+{% block content %}
+<style type="text/css">
+.box{
+margin: 20px;
+
+}
+.box:hover{
+
+
+box-shadow:5px 5px 5px 5px;margin:5px;
+}
+
+</style>
+<br>
+<div class="container">
+<div class="row">
+<div class="col-md-12 text-center">
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissable" aria-hidden="true">
+<button type="button" class="close" data-dismiss="alert">X</button>    
+    {{ message }} </div>
+    {% endfor %}
+    </div></div>
+   <div class="row">
+<div class="col-md-12 ">
+<!-- <center><marquee bgcolor="blur" Behavior="alternate" ALIGN="top"><h3 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.6s"><font size=10>تطبيق منزلي لتصفح الملفات</font></h3></marquee></center><br><br> -->
+<div class="well well-large text-center " style="font-family: KacstQurn,Suruma;"><h1>تطبيق منزلي لتصفح الملفات</h1></div>
+</div></div>
+<div class="row">
+<div class="col-md-12 center well well-large" !--style="opacity: 0.5;"--> 
+<a  href="{{ url_for('show',var=1) }}"   ><img src="static/icon/image.gif" class="box" title="الصور" width="200" height="200" alt=""></a><a href="{{ url_for('show',var=2) }}"><img src="static/icon/sound.gif" class="box" title="الصوت" width="200" height="200"></a><a href="{{ url_for('show',var=3) }}" ><img src="static/icon/video.gif" class="box" title="الفيديو" width="200" height="200"></a>
+<a  href="#" ><img src="static/icon/game.gif" class="box" title="العاب" width="200" height="200"></a>
+<a  href="/addfiles" ><img title="اضافة ملف جديد" class="box" src="static/icon/new.gif" width="200" height="200" alt=""></a>
+
+</div></div></div>
+<script>
+//alert({{trns}});
+document.getElementById("trn").onclick=function () {
+if ({{trns}} =='0' ) {
+var df=window.prompt("اختار نوع البجث  هل هو في 1-الصور 2-الصوت 3-الفيديو اكتب الرقم:","");
+document.getElementById("acc").setAttribute("action","/search"+df+"");
+//alert(document.getElementById("acc").getAttribute("action"));
+}}
+</script>
+{% endblock content%}
+
+
